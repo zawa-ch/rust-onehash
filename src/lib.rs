@@ -1,4 +1,5 @@
 pub mod md5;
+#[cfg(test)] mod tests;
 
 /// 任意長のビット列から固定長ビットのダイジェストを生成する関数を表します。
 trait HashFunction {
@@ -14,12 +15,4 @@ trait HashFunction {
     }
     /// 現在のメッセージダイジェストを取得します。
     fn digest(&self) -> Self::DigestType;
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
 }
