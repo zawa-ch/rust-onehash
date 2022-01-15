@@ -1,3 +1,4 @@
+#[cfg(test)] mod tests;
 use core::fmt::Debug;
 use std::convert::{TryFrom, TryInto};
 use crate::HashFunction;
