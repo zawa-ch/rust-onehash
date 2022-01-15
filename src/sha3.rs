@@ -1,3 +1,4 @@
+#[cfg(test)] mod test256;
 #[cfg(test)] mod test384;
 #[cfg(test)] mod test512;
 use crate::HashFunction;
@@ -85,3 +86,5 @@ pub type SHA3Hash512Digest = SHA3HashDigest<64>;
 pub type SHA3Hash512 = SHA3Hash<64, 72>;
 pub type SHA3Hash384Digest = SHA3HashDigest<48>;
 pub type SHA3Hash384 = SHA3Hash<48, 104>;
+pub type SHA3Hash256Digest = SHA3HashDigest<32>;
+pub type SHA3Hash256 = SHA3Hash<32, 136>;
