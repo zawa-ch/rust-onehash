@@ -1,3 +1,4 @@
+#[cfg(test)] mod test224;
 #[cfg(test)] mod test256;
 #[cfg(test)] mod test384;
 #[cfg(test)] mod test512;
@@ -88,3 +89,5 @@ pub type SHA3Hash384Digest = SHA3HashDigest<48>;
 pub type SHA3Hash384 = SHA3Hash<48, 104>;
 pub type SHA3Hash256Digest = SHA3HashDigest<32>;
 pub type SHA3Hash256 = SHA3Hash<32, 136>;
+pub type SHA3Hash224Digest = SHA3HashDigest<28>;
+pub type SHA3Hash224 = SHA3Hash<28, 144>;
