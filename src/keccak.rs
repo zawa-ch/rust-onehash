@@ -33,7 +33,6 @@ impl<T> KeccakDataSetter<T> {
 /// この実装はKeccakのstate array内でlaneとして用いられます。
 pub trait KeccakWord<T = Self> :
     Default +
-    std::fmt::Debug +
     Copy +
     Eq +
     std::ops::Not<Output = T> +
@@ -184,7 +183,6 @@ impl<T: KeccakWord> KeccakStateArray<T> {
             self.op_pi();
             self.op_chi();
             self.op_iota(i);
-            if i == 0 {dbg!(self.0);}
         }
     }
     fn op_theta(&mut self) {
