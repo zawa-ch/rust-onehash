@@ -3,6 +3,7 @@
 
 use std::convert::TryFrom;
 
+/// Keccakでビット、またはバイト単位のアクセスをサポートするためのゲッター。
 #[derive(Clone, Copy)]
 pub enum KeccakDataGetter<T> {
     Byte(fn (&T, usize) -> u8, usize),
@@ -16,6 +17,7 @@ impl<T> KeccakDataGetter<T> {
     pub fn is_bit(&self) -> bool { if let Self::Bit(_, _) = self { true } else { false } }
 }
 
+/// Keccakでビット、またはバイト単位のアクセスをサポートするためのセッター。
 #[derive(Clone, Copy)]
 pub enum KeccakDataSetter<T> {
     Byte(fn (&mut T, usize, u8), usize),
@@ -70,6 +72,7 @@ pub trait KeccakSpongeInputArray<T = Self> : Default {
     fn set_bit(&mut self, index: usize, value: bool);
 }
 
+/// Keccakで使用される64ビットワード。
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct KeccakWord64(u64);
 impl KeccakWord64 {
@@ -249,6 +252,7 @@ impl<T: KeccakWord> Default for KeccakStateArray<T> {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct KeccakSponge<T: KeccakWord>(KeccakStateArray<T>);
 impl<T: KeccakWord> KeccakSponge<T> {
+    /// spongeにデータを「吸収」します。
     pub fn absorb<I: KeccakSpongeInputArray>(&mut self, in_data: &I) {
         assert!(I::R <= KeccakStateArray::<T>::B);
         let dest_g = KeccakStateArray::<T>::getter();
@@ -272,6 +276,7 @@ impl<T: KeccakWord> KeccakSponge<T> {
         }
         self.0.keccak_f();
     }
+    /// spongeからデータを「絞り出」します。
     pub fn squeeze<O: KeccakSpongeInputArray>(&mut self) -> O {
         assert!(O::R <= KeccakStateArray::<T>::B);
         let mut result = O::default();

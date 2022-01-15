@@ -24,6 +24,7 @@ impl<const RSIZE: usize> KeccakSpongeInputArray for SHA3HashChunk<RSIZE> {
 
 type SHA3HashDigest<const D: usize> = [u8; D];
 
+/// SHA3のダイジェストを計算するためのハッシュ関数。
 pub struct SHA3Hash<const D: usize, const R: usize> {
     length: usize,
     chunk: SHA3HashChunk<R>,
@@ -83,11 +84,19 @@ impl<const D: usize, const R: usize> HashFunction for SHA3Hash<D, R> {
     }
 }
 
+/// SHA3-512 のハッシュ関数のダイジェストを表します。
 pub type SHA3Hash512Digest = SHA3HashDigest<64>;
+/// SHA3-512 のハッシュ関数を表します。
 pub type SHA3Hash512 = SHA3Hash<64, 72>;
+/// SHA3-384 のハッシュ関数のダイジェストを表します。
 pub type SHA3Hash384Digest = SHA3HashDigest<48>;
+/// SHA3-384 のハッシュ関数を表します。
 pub type SHA3Hash384 = SHA3Hash<48, 104>;
+/// SHA3-256 のハッシュ関数のダイジェストを表します。
 pub type SHA3Hash256Digest = SHA3HashDigest<32>;
+/// SHA3-256 のハッシュ関数を表します。
 pub type SHA3Hash256 = SHA3Hash<32, 136>;
+/// SHA3-224 のハッシュ関数のダイジェストを表します。
 pub type SHA3Hash224Digest = SHA3HashDigest<28>;
+/// SHA3-224 のハッシュ関数を表します。
 pub type SHA3Hash224 = SHA3Hash<28, 144>;
