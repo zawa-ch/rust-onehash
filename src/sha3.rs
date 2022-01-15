@@ -1,3 +1,4 @@
+#[cfg(test)] mod test384;
 #[cfg(test)] mod test512;
 use crate::HashFunction;
 use crate::keccak::*;
@@ -82,3 +83,5 @@ impl<const D: usize, const R: usize> HashFunction for SHA3Hash<D, R> {
 
 pub type SHA3Hash512Digest = SHA3HashDigest<64>;
 pub type SHA3Hash512 = SHA3Hash<64, 72>;
+pub type SHA3Hash384Digest = SHA3HashDigest<48>;
+pub type SHA3Hash384 = SHA3Hash<48, 104>;
