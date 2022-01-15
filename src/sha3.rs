@@ -1,4 +1,4 @@
-#[cfg(test)] mod test;
+#[cfg(test)] mod test512;
 use crate::HashFunction;
 use crate::keccak::*;
 
