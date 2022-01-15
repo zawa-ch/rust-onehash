@@ -1,6 +1,7 @@
 pub mod md2;
 pub mod md4;
 pub mod md5;
+pub mod keccak;
 #[cfg(test)] mod tests;
 
 /// 任意長のビット列から固定長ビットのダイジェストを生成する関数を表します。
