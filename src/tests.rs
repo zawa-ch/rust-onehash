@@ -1,4 +1,3 @@
-#[cfg(test)] mod md2;
 #[cfg(test)] mod md4;
 #[cfg(test)] mod md5;
 
